@@ -1,0 +1,94 @@
+
+    <!-- Jumbotron -->
+  <div id="intro" class="p-2 text-center bg-ligh front-b" style="height:50vh">
+    <div class="position-absolute" style="top:40%;left:50%;transform: translate(-50%,-50%);">
+      <h1 class="mb-3 h2 text-success">Blog For Software Developer</h1>
+      <p class="mb-3 text-success">Best & free guide for programing</p>
+      <a class="btn btn-primary m-2" href="/blogs/new" role="button">Add New Blog</a>
+    </div>
+  </div>
+    <!-- Jumbotron -->
+
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-center">
+        <h4 class="mb-5 text-light"><strong>Latest posts</strong></h4>
+        <div class="row">
+          <% @blogs.each do |b| %>
+            <div class="col-lg-4 col-md-4 mb-4">
+              <div class="card">
+                <div class="bg-image hover-overla ripple" data-mdb-ripple-color="light">
+                  <%if b.photo.present? %>
+                  <%= image_tag url_for(b&.photo), class:"img-fluid rounded-top"%>
+                  <%else%>
+                  <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid    rounded-top" />
+                  <%end%>
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-header" style="background-color:whitesmoke;">
+                  <h5 class="card-title"><%= b&.title %></h5>
+                </div>
+                <div class="card-body" style="height: 45vh;">
+                  <div>
+                    <p class="card-text text-start"><%= b&.blog_body&.truncate(500) %></p>
+                  </div>
+                </div>
+                <div class="card-footer text-muted" style="background-color: rgb(255, 255, 255);">
+                  <%= link_to "Read" , blog_path(b.id), class:"btn btn-primary" %>
+                  <%if current_user&.is_admin?%>
+                  <%= link_to "Edit" , edit_blog_path(b.id), class:"btn btn-primary" %>
+                  <%= link_to 'Delete', blog_path(b.id),class:"btn btn-danger", data: { "turbo-method": :delete } %>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        </div>
+
+        
+
+          
+
+          
+        </div>
+      </section>
+      <!--Section: Content-->
+
+      <!-- Pagination -->
+      <nav class="my-4" aria-label="...">
+        <ul class="pagination pagination-circle justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="bg-light text-lg-start">
+    <div class="text-end p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      <%if !current_user.present?%>
+      <a class="text-dark" href="/users/sign_in">admin login</a>
+      <%else%>
+      <%= link_to 'admin logout', destroy_user_session_path, data: { "turbo-method": :delete ,confirm: 'Are you sure?' } %>
+      <%end%>
+    </div>
+  </footer>
+</body>
+</html>

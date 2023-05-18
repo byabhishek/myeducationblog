@@ -1,0 +1,36 @@
+<div class="container" style="margin-top: 65px">
+  <div class="border p-5 rounded"style="background-color: darkgray;">
+    <h3 class="text-center mb-3">Create Blog</h3>
+<%= form_with model: @blog do |form| %> 
+ <%= form.hidden_field :user_id, value: current_user.id %>
+<div class="mb-3">
+  <%= form.text_field :subject, class:"form-control", placeholder:"Enter Subject Of Blog" %>
+</div>
+<div class="mb-3">
+  <%= form.text_field :title, class:"form-control", placeholder:"Enter Title Of Blog" %>
+</div>
+<div class="mb-3">
+  <%= form.text_field :sub_title, class:"form-control", placeholder:"Enter Sub Title Of Blog" %>
+</div>
+<div class="mb-3">
+  <%= form.text_area :blog_body, class:"form-control", placeholder:"Write a Blog Body",rows: 5 %>
+</div>
+
+<div class="mb-3">
+  <label for="formFile" class="form-label">Upload Image</label>
+  <%= form.file_field :photo, class:"form-control" %>
+
+</div>
+
+<div class="mb-3 d-flex justify-content-center">
+  <div class="d-grid col-5 mx-auto">
+    <%= link_to "Back",blogs_path, class:"btn btn-primary " %>
+    </div>
+  <div class="d-grid col-5 mx-auto">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+</div>
+
+<% end %>
+  </div>
+</div>
