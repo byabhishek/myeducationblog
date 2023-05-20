@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :blogs
   resources :users
   root "blogs#index"
-  get '*path', to: 'application#not_found'
+  get '*', to: 'application#not_found'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
