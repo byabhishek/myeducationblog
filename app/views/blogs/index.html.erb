@@ -2,8 +2,8 @@
 
 <div>
     <!-- Jumbotron -->
-  <div id="intro" class="p-2 text-center bg-ligh front-b" style="height:50vh">
-    <div class="position-absolute" style="top:40%;left:50%;transform: translate(-50%,-50%);">
+  <div id="intr" class="p-2 text-center bg-ligh back-bg  d-flex justify-content-center align-items-center" style="height:70vh">
+    <div class="position-absolut" style="top:40%;left:50%;transform: translat(-50%,-50%);">
       <h1 class="mb-3 h2 text-success">Blog For Software Developer</h1>
       <p class="mb-3 text-success">Best & free guide for programing</p>
       <a class="btn btn-primary m-2" href="/blogs/new" role="button">Add New Blog</a>
@@ -18,7 +18,7 @@
     <div class="container">
       <!--Section: Content-->
       <section class="text-center">
-        <h4 class="mb-5 text-light"><strong style="text-decoration: underline;">Latest posts</strong></h4>
+        <h4 class="mb-5 text-success"><strong style="text-decoration: underline;">Latest posts</strong></h4>
         <div class="row">
           <% @blogs.each do |b| %>
             <div class="col-lg-4 col-md-4 mb-4">
